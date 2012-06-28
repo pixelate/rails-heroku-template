@@ -18,7 +18,7 @@ puts "-----------------------------------------------------------------------"
 run 'rm Gemfile'
 create_file 'Gemfile', <<HERE
 source 'http://rubygems.org'
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.6'
 gem 'thin'
 gem 'pg'
 gem 'jquery-rails'
