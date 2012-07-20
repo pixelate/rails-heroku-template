@@ -22,14 +22,15 @@ gem 'rails', '3.2.6'
 gem 'thin'
 gem 'pg'
 gem 'jquery-rails'
+gem 'friendly_id', '4.0.7'
 
 group :assets do
-  gem 'less'
-  gem 'uglifier'
+  gem 'less-rails', '2.2.0'
+  gem 'uglifier', '1.2.2'
 end
 
 group :development do
-	gem 'mysql'
+	gem 'mysql2'
 end
 HERE
 
@@ -44,20 +45,23 @@ puts "-----------------------------------------------------------------------"
 run 'rm config/database.yml'
 create_file 'config/database.yml', <<HERE
 development:
-  adapter: mysql
+  adapter: mysql2
   database: #{app_name}_development
   username: root
   password:
   host: localhost
   socket: /tmp/mysql.sock
-
+  encoding: utf8
+  
 test:
-  adapter: mysql
+  adapter: mysql2
   database: #{app_name}_test
   username: root
   password:
   host: localhost
   socket: /tmp/mysql.sock
+  encoding: utf8
+    
 HERE
 
 puts "-----------------------------------------------------------------------"
