@@ -18,11 +18,11 @@ puts "-----------------------------------------------------------------------"
 run 'rm Gemfile'
 create_file 'Gemfile', <<HERE
 source 'http://rubygems.org'
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.10'
 gem 'thin'
 gem 'pg'
 gem 'jquery-rails'
-gem 'friendly_id', '4.0.7'
+gem 'friendly_id', '4.0.8'
 
 group :assets do
   gem 'less-rails', '2.2.0'
@@ -90,7 +90,7 @@ git :commit => "-m 'Initial commit of Rails app for Heroku Cedar'"
 puts "-----------------------------------------------------------------------"
 puts "Create Heroku app"
 puts "-----------------------------------------------------------------------"
-run "heroku create #{app_name} --stack cedar"
+run "heroku create #{app_name} --stack cedar --region eu"
 
 puts "-----------------------------------------------------------------------"
 puts "Push to Heroku"
