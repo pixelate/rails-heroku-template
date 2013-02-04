@@ -58,7 +58,6 @@ HERE
 puts "-----------------------------------------------------------------------"
 puts "Setup Pow"
 puts "-----------------------------------------------------------------------"
-
 create_file '.powrc', <<HERE
 if [ -f "$rvm_path/scripts/rvm" ] && [ -f ".rvmrc" ]; then
   source "$rvm_path/scripts/rvm"
@@ -74,6 +73,8 @@ puts "-----------------------------------------------------------------------"
 puts "Install bundles"
 puts "-----------------------------------------------------------------------"
 run "cd #{destination_root}"
+run "rvm gemset create '#{app_name}'"
+run "gem install bundler"
 run "bundle install"
 
 run "ln -s #{destination_root} ~/.pow/#{app_name}"
