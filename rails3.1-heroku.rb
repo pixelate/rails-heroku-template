@@ -56,6 +56,29 @@ test:
 HERE
 
 puts "-----------------------------------------------------------------------"
+puts "Setup Pow"
+puts "-----------------------------------------------------------------------"
+
+create_file '.powrc', <<HERE
+if [ -f "$rvm_path/scripts/rvm" ] && [ -f ".rvmrc" ]; then
+  source "$rvm_path/scripts/rvm"
+  source ".rvmrc"
+fi
+HERE
+
+create_file '.rvmrc', <<HERE
+rvm 1.9.3@#{app_name}
+HERE
+
+puts "-----------------------------------------------------------------------"
+puts "Install bundles"
+puts "-----------------------------------------------------------------------"
+run 'cd #{destination_root}'
+run 'bundle install'
+
+run "ln -s #{destination_root} ~/.pow/#{app_name}"
+
+puts "-----------------------------------------------------------------------"
 puts "Setup database"
 puts "-----------------------------------------------------------------------"
 rake "db:create"
@@ -87,21 +110,3 @@ puts "-----------------------------------------------------------------------"
 puts "Push to Heroku"
 puts "-----------------------------------------------------------------------"
 run "git push heroku master"
-
-puts "-----------------------------------------------------------------------"
-puts "Setup Pow"
-puts "-----------------------------------------------------------------------"
-
-create_file '.powrc', <<HERE
-if [ -f "$rvm_path/scripts/rvm" ] && [ -f ".rvmrc" ]; then
-  source "$rvm_path/scripts/rvm"
-  source ".rvmrc"
-fi
-HERE
-
-create_file '.rvmrc', <<HERE
-rvm 1.9.3@#{app_name}
-HERE
-
-run "ln -s #{destination_root} ~/.pow/#{app_name}"
-run "open http://#{app_name}.dev/"
