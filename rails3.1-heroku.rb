@@ -52,8 +52,7 @@ test:
   database: #{app_name}_test
   username: root
   host: localhost
-  encoding: utf8
-    
+  encoding: utf8  
 HERE
 
 puts "-----------------------------------------------------------------------"
@@ -82,7 +81,7 @@ git :commit => "-m 'Initial commit of Rails app for Heroku Cedar'"
 puts "-----------------------------------------------------------------------"
 puts "Create Heroku app"
 puts "-----------------------------------------------------------------------"
-run "heroku create #{app_name} --stack cedar"
+run "heroku create #{app_name} --stack cedar --region eu"
 
 puts "-----------------------------------------------------------------------"
 puts "Push to Heroku"
