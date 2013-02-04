@@ -43,14 +43,12 @@ create_file 'config/database.yml', <<HERE
 development:
   adapter: postgresql
   database: #{app_name}_development
-  username: root
   host: localhost
   encoding: utf8
   
 test:
   adapter: postgresql
   database: #{app_name}_test
-  username: root
   host: localhost
   encoding: utf8  
 HERE
