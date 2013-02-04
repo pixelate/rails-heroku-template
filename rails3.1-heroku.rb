@@ -73,8 +73,8 @@ HERE
 puts "-----------------------------------------------------------------------"
 puts "Install bundles"
 puts "-----------------------------------------------------------------------"
-run 'cd #{destination_root}'
-run 'bundle install'
+run "cd #{destination_root}"
+run "bundle install"
 
 run "ln -s #{destination_root} ~/.pow/#{app_name}"
 
