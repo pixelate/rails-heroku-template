@@ -18,19 +18,15 @@ puts "-----------------------------------------------------------------------"
 run 'rm Gemfile'
 create_file 'Gemfile', <<HERE
 source 'http://rubygems.org'
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.11'
 gem 'thin'
 gem 'pg'
 gem 'jquery-rails'
-gem 'friendly_id', '4.0.7'
+gem 'friendly_id', '4.0.9'
 
 group :assets do
-  gem 'less-rails', '2.2.0'
-  gem 'uglifier', '1.2.2'
-end
-
-group :development do
-	gem 'mysql2'
+  gem 'less-rails', '2.2.6'
+  gem 'uglifier', '1.3.0'
 end
 HERE
 
@@ -45,21 +41,17 @@ puts "-----------------------------------------------------------------------"
 run 'rm config/database.yml'
 create_file 'config/database.yml', <<HERE
 development:
-  adapter: mysql2
+  adapter: postgresql
   database: #{app_name}_development
   username: root
-  password:
   host: localhost
-  socket: /tmp/mysql.sock
   encoding: utf8
   
 test:
-  adapter: mysql2
+  adapter: postgresql
   database: #{app_name}_test
   username: root
-  password:
   host: localhost
-  socket: /tmp/mysql.sock
   encoding: utf8
     
 HERE
@@ -100,5 +92,17 @@ run "git push heroku master"
 puts "-----------------------------------------------------------------------"
 puts "Setup Pow"
 puts "-----------------------------------------------------------------------"
+
+create_file '.powrc', <<HERE
+if [ -f "$rvm_path/scripts/rvm" ] && [ -f ".rvmrc" ]; then
+  source "$rvm_path/scripts/rvm"
+  source ".rvmrc"
+fi
+HERE
+
+create_file '.rvmrc', <<HERE
+rvm 1.9.3@#{app_name}
+HERE
+
 run "ln -s #{destination_root} ~/.pow/#{app_name}"
 run "open http://#{app_name}.dev/"
