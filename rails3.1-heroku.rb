@@ -25,6 +25,7 @@ gem 'jquery-rails'
 gem 'friendly_id', '4.0.9'
 
 group :assets do
+  gem 'therubyracer', platforms: :ruby
   gem 'less-rails', '2.2.6'
   gem 'uglifier', '1.3.0'
 end
