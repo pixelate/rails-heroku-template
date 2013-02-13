@@ -46,12 +46,12 @@ development:
   database: #{app_name}_development
   host: localhost
   encoding: utf8
-  
+
 test:
   adapter: postgresql
   database: #{app_name}_test
   host: localhost
-  encoding: utf8  
+  encoding: utf8
 HERE
 
 puts "-----------------------------------------------------------------------"
