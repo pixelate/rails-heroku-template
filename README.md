@@ -10,8 +10,6 @@
 
 `rails new projectname -m https://raw.github.com/pixelate/rails-heroku-template/master/rails3.1-heroku.rb
 
-### Requirements
-
+### Minimum Requirements
 *Gems:*
 * `heroku-2.35.0`
-* `heroku_san-4.2.5`
