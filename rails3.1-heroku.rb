@@ -64,9 +64,13 @@ if [ -f "$rvm_path/scripts/rvm" ] && [ -f ".rvmrc" ]; then
 fi
 HERE
 
+run "rvm gemset create #{app_name}"
+
 create_file '.rvmrc', <<HERE
-rvm #{ENV["RUBY_VERSION"]}@#{app_name}
+rvm use #{ENV["RUBY_VERSION"]}@#{app_name}
 HERE
+
+run "rvm rvmrc trust ."
 
 puts "-----------------------------------------------------------------------"
 puts "Install bundles"
