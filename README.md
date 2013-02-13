@@ -8,7 +8,7 @@
 
 ### Usage
 
-`rails new projectname -m https://raw.github.com/pixelate/rails-heroku-template/master/rails3.1-heroku.rb
+`rails new projectname -m https://raw.github.com/pixelate/rails-heroku-template/master/rails3.1-heroku.rb`
 
 ### Minimum Requirements
 *Gems:*
