@@ -64,7 +64,7 @@ fi
 HERE
 
 create_file '.rvmrc', <<HERE
-rvm 1.9.3@#{app_name}
+rvm #{ENV["RUBY_VERSION"]}@#{app_name}
 HERE
 
 puts "-----------------------------------------------------------------------"
